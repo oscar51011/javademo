@@ -1,3 +1,3 @@
 # Effective Java 3rd
 
-- 52. 慎用重載(overload)
+- 第52條. 慎用重載(overload)
