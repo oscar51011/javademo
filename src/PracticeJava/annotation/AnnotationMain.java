@@ -68,7 +68,7 @@ public class AnnotationMain {
 			System.out.println("child class level: " + childClazz.getAnnotation(InheritedAnnotation.class).value());
 		}
 		
-		// child method level ( 沒有反應 )
+		// parent method level
 		Method testParentInheritedAnnotation = parentClazz.getMethod("testInheritedAnnotation", null);
 		if(testParentInheritedAnnotation.isAnnotationPresent(InheritedAnnotation.class)){			
 			System.out.println("parent method level: " + testParentInheritedAnnotation.getAnnotation(InheritedAnnotation.class).value());
