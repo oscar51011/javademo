@@ -13,7 +13,7 @@
 
 ##### 2. meta-annotation
 - @Target: 描述註解使用範圍
-
+```
 	1.ElementType.ANNOTATION_TYPE: meta-annotation為此類型，用來修飾註解
 	2.ElementType.METHOD: 修飾 method EX: springMVC 的 @GATEMAPPING
 	3.ElementType.TYPE: 修飾class, interface, enum, annotation  EX: java8 的 @FunctionalInterface
@@ -32,7 +32,7 @@
 	
 	Java 16新增一個(待補充)
 	12.
-	
+```	
 	
 - @Retention: 描述註解生命週期
 
