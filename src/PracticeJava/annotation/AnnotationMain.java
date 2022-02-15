@@ -55,16 +55,29 @@ public class AnnotationMain {
 	 */
 	public void testInherited() throws NoSuchMethodException, SecurityException {
 		
-		Class<Child> clazz = Child.class;
-		// class level
-		if(clazz.isAnnotationPresent(InheritedAnnotation.class)) {
-			System.out.println(clazz.getAnnotation(InheritedAnnotation.class).value());
+		Class<Parent> parentClazz = Parent.class;
+		Class<Child> childClazz = Child.class;
+		
+		// parent class level
+		if(parentClazz.isAnnotationPresent(InheritedAnnotation.class)) {
+			System.out.println("parent class level: " + parentClazz.getAnnotation(InheritedAnnotation.class).value());
 		}
 		
-		// method level ( 沒有反應 )
-		Method testInheritedAnnotation = clazz.getMethod("testInheritedAnnotation", null);
-		if(testInheritedAnnotation.isAnnotationPresent(InheritedAnnotation.class)){
-			System.out.println(clazz.getAnnotation(InheritedAnnotation.class).value());
+		// child class level
+		if(childClazz.isAnnotationPresent(InheritedAnnotation.class)) {
+			System.out.println("child class level: " + childClazz.getAnnotation(InheritedAnnotation.class).value());
+		}
+		
+		// child method level ( 沒有反應 )
+		Method testParentInheritedAnnotation = parentClazz.getMethod("testInheritedAnnotation", null);
+		if(testParentInheritedAnnotation.isAnnotationPresent(InheritedAnnotation.class)){			
+			System.out.println("parent method level: " + testParentInheritedAnnotation.getAnnotation(InheritedAnnotation.class).value());
+		}
+		
+		// child method level ( 沒有反應 )
+		Method testChildInheritedAnnotation = childClazz.getMethod("testInheritedAnnotation", null);
+		if(testChildInheritedAnnotation.isAnnotationPresent(InheritedAnnotation.class)){
+			System.out.println("child method level: " + testChildInheritedAnnotation.getAnnotation(InheritedAnnotation.class).value());
 		}
 		
 	}
