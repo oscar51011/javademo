@@ -24,7 +24,7 @@ public class BigDecimalMain {
 		BigDecimal subtractionSubtraction = BigDecimal.valueOf(0.42);
 		System.out.println(minuend.subtract(subtractionSubtraction));
 		
-		// 使用 new BigDecimal(double) 得到的值是不精確的
+		// 使用 new BigDecimal(double) 得到的值是不精確的 ( 因為傳入的 double 本身也只是一個近似值 )
 		BigDecimal unsafeValue = new BigDecimal(1.02F);
 		System.out.println("使用new BigDecimal(double)是不精確的: " + unsafeValue);
 	}
