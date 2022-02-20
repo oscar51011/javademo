@@ -2,6 +2,8 @@
 
 藉由學習並實作 Effectice Java third Edition ( joshua Bloch )
 
+##### Chapter9 - General Programming
+
 - 第52條. 慎用重載(overload)
 - 第59條. 了解和使用java standard library ( 常用的 java.lang , java.util , java.io ... etc )
 - 第60條. 如果需要精確結果, 避免使用 **float** 和 **double** ( 使用 BigDecimal 也避免使用 new BigDecimal(Double double) 的 constructor )
@@ -18,4 +20,4 @@
 	 2. class/interface: 首字大寫, 盡量不使用縮寫形式
 	 3. method/field: 首字小寫
 	 4. constant  field: 全字大寫, 多個單字使用 _ 隔開
-- 第69條.
+
