@@ -1,3 +1,5 @@
 # Java
-- [Annotation](https://github.com/oscar51011/javademo/tree/master/src/PracticeJava/annotation)
+- Annotation
+- String
+- lambda
 - Java Natice Interface ( 待研究 )
