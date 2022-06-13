@@ -39,10 +39,10 @@ public class Main {
 		}
 		
 		// 測試 override ( 執行時期多態 )
-		List<Wine> wines = List.of(new Wine(), new SparklingWine(), new Champagne());
-		for(Wine wine: wines) {
-			System.out.println(wine.name());
-		}
+		//List<Wine> wines = List.of(new Wine(), new SparklingWine(), new Champagne());
+		//for(Wine wine: wines) {
+	//		System.out.println(wine.name());
+	//	}
 		
 		// Case 2:Set & List remove
 		/**
