@@ -3,31 +3,20 @@ package PracticeJava.xmlParser.JAXB;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Iterator;
+import java.io.StringWriter;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import javax.xml.stream.FactoryConfigurationError;
-import javax.xml.stream.XMLEventReader;
-import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.events.Attribute;
-import javax.xml.stream.events.StartElement;
-import javax.xml.stream.events.XMLEvent;
 
-import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-import org.xml.sax.XMLReader;
-import org.xml.sax.helpers.DefaultHandler;
 
 /**
- * 解析 XML 檔案 / XML 字串的方法 : JAXB
+ * 解析 XML 字串的方法 : JAXB
  * 
  * @author oscar51011
  * @date 2022年6月14日
@@ -36,29 +25,60 @@ public class Main {
 
 	public static void main(String[] args) throws XMLStreamException, ParserConfigurationException, SAXException, IOException, JAXBException {
 		
-		
-
-		
-		String xml = "<?xml version='1.0' encoding='MS950'?><test><req one='one' two='two2'/><resp first='first' second='second2'/></test>";
-	
-		InputStream targetStream = new ByteArrayInputStream(xml.getBytes());
-		InputSource source = new InputSource(targetStream);
-
-
-		// 2. 使用 StAX
-		// parseXmlByStAX(targetStream);
-		// 3. 使用 JXAB
-		
-		parseXmlByJAXB(targetStream);
-	}
-
-	private static void parseXmlByJAXB(InputStream targetStream) throws JAXBException {
-		JAXBContext context = JAXBContext.newInstance(Test.class);
-		Unmarshaller unmarshaller = context.createUnmarshaller();
-		Test test = (Test) unmarshaller.unmarshal(targetStream);
+		// 從 XML String 轉成 Bean
+		String xmlString = "<?xml version='1.0' encoding='UTF-8' standalone=\"yes\"?><test><req one='one' two='two2'/><resp first='first' second='second2'/></test>";	
+		Test test = parseXmltoBeanByJAXB(xmlString, Test.class);
 		System.out.println(test.getReq().getOne());
 		System.out.println(test.getReq().getTwo());
 		System.out.println(test.getResp().getFirst());
 		System.out.println(test.getResp().getSecond());
+		
+		// 從 Bean 轉成 XML String
+		Test test2 = new Test();
+		Req req = new Req();
+		req.setOne("o1");
+		req.setTwo("t2");
+		Resp resp = new Resp();
+		resp.setFirst("f1");
+		resp.setSecond("s1");
+		test2.setReq(req);
+		test2.setResp(resp);
+		
+		String resultXml = parseBeantoXmlStringByJAXB(test2);
+		System.out.println(resultXml);
+		
+	}
+
+
+	/**
+	 * 從 XML String 轉成 Bean
+	 * @param <T>
+	 * @param xmlString
+	 * @param clazz
+	 * @return
+	 * @throws JAXBException
+	 */
+	@SuppressWarnings("unchecked")
+	private static <T> T parseXmltoBeanByJAXB(String xmlString, Class<T> clazz) throws JAXBException {
+		InputStream targetStream = new ByteArrayInputStream(xmlString.getBytes());		
+		JAXBContext context = JAXBContext.newInstance(clazz);
+		Unmarshaller unmarshaller = context.createUnmarshaller();
+		return (T) unmarshaller.unmarshal(targetStream);
+	}
+	
+	/**
+	 * 從 Bean 轉成 XML String
+	 * @param <T>
+	 * @param object
+	 * @return
+	 * @throws JAXBException
+	 */
+	private static <T> String parseBeantoXmlStringByJAXB(T object) throws JAXBException {
+		JAXBContext context = JAXBContext.newInstance(object.getClass());
+		Marshaller marshaller = context.createMarshaller();
+		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+		StringWriter sw = new StringWriter();
+		marshaller.marshal(object, sw);
+		return sw.toString();
 	}
 }

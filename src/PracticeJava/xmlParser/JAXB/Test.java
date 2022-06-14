@@ -30,7 +30,4 @@ public class Test {
 	public void setResp(Resp resp) {
 		this.resp = resp;
 	}
-	
-	
-
 }
