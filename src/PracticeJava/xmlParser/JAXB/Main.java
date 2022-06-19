@@ -25,6 +25,8 @@ public class Main {
 
 	public static void main(String[] args) throws XMLStreamException, ParserConfigurationException, SAXException, IOException, JAXBException {
 		
+		System.out.println("=== transfer XML String to Bean Demo ===");
+		
 		// 從 XML String 轉成 Bean
 		String xmlString = "<?xml version='1.0' encoding='UTF-8' standalone=\"yes\"?><test><req one='one' two='two2'/><resp first='first' second='second2'/></test>";	
 		Test test = parseXmltoBeanByJAXB(xmlString, Test.class);
@@ -32,6 +34,8 @@ public class Main {
 		System.out.println(test.getReq().getTwo());
 		System.out.println(test.getResp().getFirst());
 		System.out.println(test.getResp().getSecond());
+		
+		System.out.println("=== transfer Bean to XML String Demo ===");
 		
 		// 從 Bean 轉成 XML String
 		Test test2 = new Test();
