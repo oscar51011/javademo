@@ -12,7 +12,6 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLStreamException;
 
-import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 /**
