@@ -46,7 +46,8 @@ public class Main {
 			   
 			   System.out.println(element.getName().getLocalPart());
 			   
-			   Iterator<Attribute> attributes = element.getAttributes();
+			   @SuppressWarnings("unchecked")
+			Iterator<Attribute> attributes = element.getAttributes();
 			  
 			   // 取 element 內的每個 attribute
 			   while(attributes.hasNext()) {
