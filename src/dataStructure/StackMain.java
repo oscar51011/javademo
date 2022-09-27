@@ -67,6 +67,6 @@ public class StackMain {
 		myStackString.push("test");
 		myStackString.push("test2");
 		System.out.println("case1: push 2次，印出值(預期印出 test2)" + myStackString.top());
-		System.out.println("case1: pop 1次(預期pop出 test2)" + myStackString.pop());
+		System.out.println("case2: pop 1次(預期pop出 test2)" + myStackString.pop());
 	}
 }
