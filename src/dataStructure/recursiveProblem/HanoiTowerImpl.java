@@ -1,4 +1,4 @@
-package dataStructure;
+package dataStructure.recursiveProblem;
 
 /**
  * 使用 遞迴 實作 河內塔

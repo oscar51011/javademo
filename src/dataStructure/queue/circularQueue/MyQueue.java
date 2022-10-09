@@ -1,4 +1,4 @@
-package dataStructure;
+package dataStructure.queue.circularQueue;
 
 /**
  * 實作 Circular Queue (預留一個空間來判斷空 or 滿)

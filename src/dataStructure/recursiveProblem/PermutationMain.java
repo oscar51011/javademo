@@ -1,4 +1,4 @@
-package dataStructure;
+package dataStructure.recursiveProblem;
 
 /**
  * 實作 數列排列

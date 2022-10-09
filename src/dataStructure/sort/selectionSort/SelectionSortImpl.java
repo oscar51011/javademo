@@ -1,4 +1,4 @@
-package dataStructure;
+package dataStructure.sort.selectionSort;
 
 /**
  * 實作 Selection Sort
